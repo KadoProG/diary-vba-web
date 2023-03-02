@@ -9,7 +9,9 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   const data: ComboProps[] = [
     {id: 1,name: "あああ"},
-    {id: 2,name: "いいい"}
+    {id: 2,name: "いいい"},
+    {id: 3,name: "ううう"},
+    {id: 4,name: "えええ"}
   ];
   return (
     <>
@@ -20,7 +22,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>あああ</h1>
-      <Combo data={data} length={data.length} />
+      <Combo key={"aaa"} name={"aaa"} data={data} length={data.length} />
     </>
   )
 }

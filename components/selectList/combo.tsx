@@ -1,39 +1,75 @@
 import { NextPage } from "next";
 import { ComboListProps } from "../../interfaces";
-import styled from "styled-components";
-import { useState } from "react";
+import styled from "styled-components"
+import { useEffect, useState } from "react";
+
+const BtnOkProps = styled.button`
+  border: 1px solid black;
+  padding: 10px;
+  margin: 15px 0;
+  cursor: pointer;
+  background: black;
+  color:white;
+`;
+
+const LabelItemProps = styled.label`
+  display: block;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+`;
+
+const InputRadioItemProps = styled.input`
+display: none;
+&:checked {
+  & + label {
+    background: black;
+    color: white;
+  }
+}
+`;
 
 
 const Combo: NextPage<ComboListProps> = (props) => {
-  const [num, setNum] = useState(0);
+  const [selId, setSelId] = useState(0);
   const comboLists = props.data;
-  
+
   const onselect = (selNum: number) => {
-    setNum(selNum);
+    setSelId(selNum);
   }
+
+  const onHandleChange = (id: number) => {
+    setSelId(id);
+  }
+
+  useEffect(()=> {
+    console.log(selId);
+  },[selId])
+
   return (
     <>
-    <p>コンボです</p>
-    {
-      comboLists.map(comboList => {
-        const BtnCombo = styled.div`
-        border: 1px solid black;
-        font-size: 16px;
-        line-height: 16px;
-        padding: 10px;
-        margin: 2px 0;
-        cursor: pointer;
-        background: ${num === comboList.id ? "black":"white"};
-        color: ${num === comboList.id ? "white":"black"};
-        `;
-        return (
-        <BtnCombo 
-        // background={num === comboList.id ? "black":"transparent"}
-        // fontWeight={num === comboList.id ? "bold": "normal"}
-        onClick={()=>onselect(comboList.id)}
-        >{comboList.id}:{comboList.name}</BtnCombo>)
-      })
-    }
+      <p>コンボです</p>
+      {
+        comboLists.map(comboList => (
+          <>
+            <InputRadioItemProps 
+            name={props.name}  
+            type="radio" 
+            id={"combo__"+comboList.id}
+            onChange={()=>(onHandleChange(comboList.id))}
+            >              
+            </InputRadioItemProps>
+            <LabelItemProps 
+            htmlFor={"combo__"+comboList.id}
+            >{comboList.id}:{comboList.name}
+            </LabelItemProps>
+          </>
+        )
+        )
+      }
+
+      <BtnOkProps>OK</BtnOkProps>
     </>
   )
 }
