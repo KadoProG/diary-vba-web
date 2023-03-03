@@ -1,18 +1,26 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import Combo from '../../components/selectList/combo'
-import { ComboListProps, ComboProps } from '../../interfaces'
+import Combo from '../components/selectList/combo'
+import { useEffect, useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  const data: ComboProps[] = [
+  const [selectedItem,setSelectedItem] = useState({});
+
+  const data = [
     {id: 1,name: "あああ"},
     {id: 2,name: "いいい"},
     {id: 3,name: "ううう"},
     {id: 4,name: "えええ"}
   ];
+
+
+  useEffect(()=> {
+    console.log(selectedItem);
+  }, [selectedItem]);
+
   return (
     <>
       <Head>
@@ -22,7 +30,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>あああ</h1>
-      <Combo key={"aaa"} name={"aaa"} data={data} length={data.length} />
+      <Combo 
+      name={"aaa"} 
+      data={data} 
+      length={data.length} 
+      setItem={(item) => setSelectedItem(item)} 
+      />
     </>
   )
 }
