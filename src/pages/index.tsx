@@ -16,10 +16,9 @@ export default function Home() {
     {id: 4,name: "えええ"}
   ];
 
-
-  useEffect(()=> {
-    console.log(selectedItem);
-  }, [selectedItem]);
+  // useEffect(()=> {
+  //   console.log(selectedItem);
+  // }, [selectedItem]);
 
   return (
     <>
