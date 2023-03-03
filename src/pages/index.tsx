@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  
+
   const [selectedItem,setSelectedItem] = useState({});
 
   const data = [
@@ -31,8 +31,8 @@ export default function Home() {
       </Head>
       <h1>あああ</h1>
       <Combo 
-      name={"aaa"} 
-      data={data} 
+      name={"質問1"} 
+      items={data} 
       length={data.length} 
       setItem={(item) => setSelectedItem(item)} 
       />
