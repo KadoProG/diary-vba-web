@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  
   const [selectedItem,setSelectedItem] = useState({});
 
   const data = [
