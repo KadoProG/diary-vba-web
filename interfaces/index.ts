@@ -1,6 +1,6 @@
 import { AppProps } from "next/app";
 
-export type ComboListProps = {
+export type ComboList= {
   name: string;
   data: ComboProps[];
   length: number;
