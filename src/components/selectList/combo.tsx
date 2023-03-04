@@ -2,6 +2,7 @@ import { NextPage } from "next";
 import styled from "styled-components";
 import { useId } from "react";
 import { ComboItem } from "@/interfaces";
+import { useState } from "react";
 
 const BtnOk = styled.button`
   border: 1px solid black;
@@ -51,14 +52,10 @@ const LabelItem = styled.label`
   cursor: pointer;
 `;
 
-const InputRadioItem = styled.input`
+const InputRadioItem = styled.input<{ background: string }>`
   display: none;
-  &:checked {
-    & + label {
-      background: black;
-      color: white;
-    }
-  }
+  background: ${(props) => props.background};
+  color: white;
 `;
 
 type Props = {
@@ -73,7 +70,10 @@ const Combo: NextPage<Props> = (props) => {
   const comboName = props.name;
   const id = useId();
 
+  const [selectItemid, setSelectItemId] = useState<number>();
+
   const onHandleChange = (data: ComboItem) => {
+    setSelectItemId(data.id);
     props.setItem(data);
   };
 
@@ -89,6 +89,7 @@ const Combo: NextPage<Props> = (props) => {
             name={props.name}
             type="radio"
             id={id + "__" + comboList.id}
+            background={comboList.id === selectItemid ? "black" : "white"}
             onChange={() => onHandleChange(comboList)}
           ></InputRadioItem>
           <LabelItem htmlFor={id + "__" + comboList.id}>
