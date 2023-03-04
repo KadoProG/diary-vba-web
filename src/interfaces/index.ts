@@ -1,5 +1,5 @@
-import { AppProps } from "next/app";
-
-
-
+export type ComboItem = {
+  id: number;
+  name: string;
+}
 

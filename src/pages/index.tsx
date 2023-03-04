@@ -1,23 +1,23 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import Combo from '../components/selectList/combo'
-import { useEffect, useState } from 'react'
+import Head from "next/head";
+import { Inter } from "next/font/google";
+import Combo from "../components/selectList/combo";
+import { useState } from "react";
+import { ComboItem } from "@/interfaces";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const initComboItem: ComboItem = { id: 0, name: "" };
+  const [selectedItem, setSelectedItem] = useState<ComboItem>(initComboItem);
 
-  const [selectedItem,setSelectedItem] = useState({});
-
-  const data = [
-    {id: 1,name: "あああ"},
-    {id: 2,name: "いいい"},
-    {id: 3,name: "ううう"},
-    {id: 4,name: "えええ"}
+  const data: ComboItem[] = [
+    { id: 1, name: "あああ" },
+    { id: 2, name: "いいい" },
+    { id: 3, name: "ううう" },
+    { id: 4, name: "えええ" },
   ];
 
-  // useEffect(()=> {
+  // useEffect(() => {
   //   console.log(selectedItem);
   // }, [selectedItem]);
 
@@ -30,12 +30,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>あああ</h1>
-      <Combo 
-      name={"質問1"} 
-      items={data} 
-      length={data.length} 
-      setItem={(item) => setSelectedItem(item)} 
+      <p>
+        選択されたもの: {selectedItem.id}:{selectedItem.name}
+      </p>
+      <Combo
+        name={"質問1"}
+        items={data}
+        length={data.length}
+        setItem={(item) => setSelectedItem(item)}
       />
     </>
-  )
+  );
 }
