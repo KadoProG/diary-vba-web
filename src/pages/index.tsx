@@ -31,7 +31,7 @@ export default function Home() {
       </Head>
       <h1>あああ</h1>
       <p>
-        選択されたもの: {selectedItem.id}:{selectedItem.name}
+        選択されたものは: {selectedItem.id}:{selectedItem.name}
       </p>
       <Combo
         name={"質問1"}
