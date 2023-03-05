@@ -44,17 +44,18 @@ const BtnDoEdit = styled.button`
   }
 `;
 
-const LabelItem = styled.label`
+const LabelItem = styled.label<{ selected: boolean }>`
   display: block;
   border: 1px solid black;
   padding: 10px;
   margin: 5px 0;
+  background: ${(props) => (props.selected ? "black" : "white")};
+  color: ${(props) => (props.selected ? "white" : "black")};
   cursor: pointer;
 `;
 
-const InputRadioItem = styled.input<{ background: string }>`
+const InputRadioItem = styled.input`
   display: none;
-  background: ${(props) => props.background};
   color: white;
 `;
 
@@ -86,13 +87,15 @@ const ComboList: NextPage<Props> = (props) => {
       {comboLists.map((comboList) => (
         <div key={comboList.id}>
           <InputRadioItem
-            name={props.name}
+            name={id}
             type="radio"
             id={id + "__" + comboList.id}
-            background={comboList.id === selectItemid ? "black" : "white"}
             onChange={() => onHandleChange(comboList)}
           ></InputRadioItem>
-          <LabelItem htmlFor={id + "__" + comboList.id}>
+          <LabelItem
+            htmlFor={id + "__" + comboList.id}
+            selected={comboList.id === selectItemid}
+          >
             {comboList.id}:{comboList.name}
           </LabelItem>
         </div>
