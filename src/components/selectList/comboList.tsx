@@ -44,7 +44,7 @@ const BtnDoEdit = styled.button`
   }
 `;
 
-const LabelItem = styled.label<{ selected: boolean }>`
+const DivItem = styled.div<{ selected: boolean }>`
   display: block;
   border: 1px solid black;
   padding: 10px;
@@ -52,11 +52,6 @@ const LabelItem = styled.label<{ selected: boolean }>`
   background: ${(props) => (props.selected ? "black" : "white")};
   color: ${(props) => (props.selected ? "white" : "black")};
   cursor: pointer;
-`;
-
-const InputRadioItem = styled.input`
-  display: none;
-  color: white;
 `;
 
 type Props = {
@@ -73,7 +68,7 @@ const ComboList: NextPage<Props> = (props) => {
 
   const [selectItemid, setSelectItemId] = useState<number>();
 
-  const onHandleChange = (data: ComboItem) => {
+  const onHandleClick = (data: ComboItem) => {
     setSelectItemId(data.id);
     props.setItem(data);
   };
@@ -85,20 +80,13 @@ const ComboList: NextPage<Props> = (props) => {
         <BtnDoEdit>編集する</BtnDoEdit>
       </p>
       {comboLists.map((comboList) => (
-        <div key={comboList.id}>
-          <InputRadioItem
-            name={id}
-            type="radio"
-            id={id + "__" + comboList.id}
-            onChange={() => onHandleChange(comboList)}
-          ></InputRadioItem>
-          <LabelItem
-            htmlFor={id + "__" + comboList.id}
-            selected={comboList.id === selectItemid}
-          >
-            {comboList.id}:{comboList.name}
-          </LabelItem>
-        </div>
+        <DivItem
+          key={comboList.id}
+          selected={comboList.id === selectItemid}
+          onClick={() => onHandleClick(comboList)}
+        >
+          {comboList.id}:{comboList.name}
+        </DivItem>
       ))}
 
       <BtnOk>OK</BtnOk>
