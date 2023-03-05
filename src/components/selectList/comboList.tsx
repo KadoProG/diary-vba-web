@@ -1,8 +1,8 @@
 import { NextPage } from "next";
 import styled from "styled-components";
-import { useId } from "react";
 import { ComboItem } from "@/interfaces";
 import { useState } from "react";
+import Combo from "./combo";
 
 const BtnOk = styled.button`
   border: 1px solid black;
@@ -44,16 +44,6 @@ const BtnDoEdit = styled.button`
   }
 `;
 
-const DivItem = styled.div<{ selected: boolean }>`
-  display: block;
-  border: 1px solid black;
-  padding: 10px;
-  margin: 5px 0;
-  background: ${(props) => (props.selected ? "black" : "white")};
-  color: ${(props) => (props.selected ? "white" : "black")};
-  cursor: pointer;
-`;
-
 type Props = {
   name: string;
   items: ComboItem[];
@@ -64,7 +54,6 @@ type Props = {
 const ComboList: NextPage<Props> = (props) => {
   const comboLists = props.items;
   const comboName = props.name;
-  const id = useId();
 
   const [selectItemid, setSelectItemId] = useState<number>();
 
@@ -80,13 +69,12 @@ const ComboList: NextPage<Props> = (props) => {
         <BtnDoEdit>編集する</BtnDoEdit>
       </p>
       {comboLists.map((comboList) => (
-        <DivItem
+        <Combo
           key={comboList.id}
+          item={comboList}
           selected={comboList.id === selectItemid}
-          onClick={() => onHandleClick(comboList)}
-        >
-          {comboList.id}:{comboList.name}
-        </DivItem>
+          setItem={(item) => onHandleClick(item)}
+        />
       ))}
 
       <BtnOk>OK</BtnOk>
