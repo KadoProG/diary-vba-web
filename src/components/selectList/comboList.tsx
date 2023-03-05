@@ -4,14 +4,14 @@ import { ComboItem } from "@/interfaces";
 import { useState } from "react";
 import Combo from "./combo";
 
-const BtnOk = styled.button`
-  border: 1px solid black;
-  padding: 10px;
-  margin: 15px 0;
-  cursor: pointer;
-  background: black;
-  color: white;
-`;
+// const BtnOk = styled.button`
+//   border: 1px solid black;
+//   padding: 10px;
+//   margin: 15px 0;
+//   cursor: pointer;
+//   background: black;
+//   color: white;
+// `;
 
 const BtnDoEdit = styled.button`
   border: 1px solid black;
@@ -44,11 +44,17 @@ const BtnDoEdit = styled.button`
   }
 `;
 
+const DivContainer = styled.div`
+  display: flex;
+  flex-flow: column;
+`;
+
 type Props = {
   name: string;
   items: ComboItem[];
   length: number;
   setItem(item: ComboItem): void;
+  stVisible: boolean;
 };
 
 const ComboList: NextPage<Props> = (props) => {
@@ -57,27 +63,36 @@ const ComboList: NextPage<Props> = (props) => {
 
   const [selectItemid, setSelectItemId] = useState<number>();
 
+  const [stVisible, setStVisible] = useState<boolean>(true);
+
   const onHandleClick = (data: ComboItem) => {
     setSelectItemId(data.id);
     props.setItem(data);
+    setStVisible(false);
   };
+
+  // console.log(`親の呼び出し${props.name}`);
 
   return (
     <>
       <p>
         {comboName}
-        <BtnDoEdit>編集する</BtnDoEdit>
+        <BtnDoEdit onClick={() => setStVisible(true)}>編集する</BtnDoEdit>
       </p>
-      {comboLists.map((comboList) => (
-        <Combo
-          key={comboList.id}
-          item={comboList}
-          selected={comboList.id === selectItemid}
-          setItem={(item) => onHandleClick(item)}
-        />
-      ))}
+      {/* <p>選択されたもの: </p> */}
+      <DivContainer>
+        {comboLists.map((comboList) => (
+          <Combo
+            key={comboList.id}
+            item={comboList}
+            selected={comboList.id === selectItemid}
+            setItem={(item) => onHandleClick(item)}
+            stVisible={stVisible}
+          />
+        ))}
+      </DivContainer>
 
-      <BtnOk>OK</BtnOk>
+      {/* <BtnOk>OK</BtnOk> */}
     </>
   );
 };
