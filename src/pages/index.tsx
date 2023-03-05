@@ -1,6 +1,6 @@
 import Head from "next/head";
 // import { Inter } from "next/font/google";
-import Combo from "../components/selectList/combo";
+import ComboList from "../components/selectList/comboList";
 import { useState } from "react";
 import { ComboItem } from "@/interfaces";
 
@@ -33,7 +33,7 @@ export default function Home() {
       <p>
         選択されたものは: {selectedItem.id}:{selectedItem.name}
       </p>
-      <Combo
+      <ComboList
         name={"質問1"}
         items={data}
         length={data.length}

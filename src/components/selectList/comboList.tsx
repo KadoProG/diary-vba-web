@@ -65,7 +65,7 @@ type Props = {
   setItem(item: ComboItem): void;
 };
 
-const Combo: NextPage<Props> = (props) => {
+const ComboList: NextPage<Props> = (props) => {
   const comboLists = props.items;
   const comboName = props.name;
   const id = useId();
@@ -103,4 +103,4 @@ const Combo: NextPage<Props> = (props) => {
   );
 };
 
-export default Combo;
+export default ComboList;
