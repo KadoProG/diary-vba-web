@@ -14,8 +14,8 @@ const DivItem = styled.div<{ selected: boolean; stVisible: boolean }>`
   padding: 10px;
   margin: 5px 0;
   font-size: 14px;
-  /* background: ${(props) => (props.selected ? "black" : "white")};
-  color: ${(props) => (props.selected ? "white" : "black")}; */
+  background: ${(props) => (props.selected ? "black" : "white")};
+  color: ${(props) => (props.selected ? "white" : "black")};
   cursor: pointer;
 `;
 

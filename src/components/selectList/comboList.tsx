@@ -13,7 +13,7 @@ import Combo from "./combo";
 //   color: white;
 // `;
 
-const BtnDoEdit = styled.button`
+const BtnDoEdit = styled.button<{ isEdit: boolean }>`
   border: 1px solid black;
   background: white;
   padding-left: 24px;
@@ -31,6 +31,8 @@ const BtnDoEdit = styled.button`
     top: 6px;
     width: 2px;
     height: 14px;
+    transform: ${(props) => (props.isEdit ? "rotate(90deg)" : "none")};
+    animation-delay: 0.3s;
   }
   &::after {
     content: "";
@@ -77,7 +79,9 @@ const ComboList: NextPage<Props> = (props) => {
     <>
       <p>
         {comboName}
-        <BtnDoEdit onClick={() => setStVisible(true)}>編集する</BtnDoEdit>
+        <BtnDoEdit onClick={() => setStVisible(true)} isEdit={stVisible}>
+          編集する
+        </BtnDoEdit>
       </p>
       {/* <p>選択されたもの: </p> */}
       <DivContainer>
