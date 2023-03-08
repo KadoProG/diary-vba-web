@@ -19,14 +19,6 @@ const DivItem = styled.div<{ selected: boolean; stVisible: boolean }>`
   cursor: pointer;
 `;
 
-// const InputTextItem = styled.input<{ selected: boolean }>`
-//   border: none;
-//   box-shadow: none;
-//   background: transparent;
-//   font-size: 14px;
-//   /* color: ${(props) => (props.selected ? "white" : "black")}; */
-// `;
-
 const Combo: NextPage<Props> = (props) => {
   const item = props.item;
 
@@ -41,12 +33,6 @@ const Combo: NextPage<Props> = (props) => {
       stVisible={props.stVisible}
     >
       {item.id}:{item.name}
-      {/* <InputTextItem
-        type={"text"}
-        value={item.name}
-        selected={props.selected}
-        readOnly={props.stVisible}
-      /> */}
     </DivItem>
   );
 };
