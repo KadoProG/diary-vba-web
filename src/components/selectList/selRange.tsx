@@ -6,7 +6,9 @@ import styled from "styled-components";
 type Props = {
   name: string;
   item: selRangeItem;
+  value: number;
   setValue(value: number): void;
+  unit: string;
 };
 
 const InputRange = styled.input`
@@ -79,7 +81,10 @@ const SelRange: NextPage<Props> = (props) => {
 
   return (
     <>
-      <p>{props.name}</p>
+      <p>
+        {props.name}: {props.value}
+        {props.unit}
+      </p>
       <DivFlex>
         <InputRange
           type="range"

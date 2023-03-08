@@ -1,15 +1,11 @@
 import Head from "next/head";
 import ComboList from "@/components/selectList/comboList";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ComboItem, selRangeItem } from "@/interfaces";
 import SelRange from "@/components/selectList/selRange";
 import Link from "next/link";
 
 export default function Home() {
-  const initComboItem: ComboItem = { id: 0, name: "" };
-  const [selectedItem, setSelectedItem] = useState<ComboItem>(initComboItem);
-  const [selected2Item, setSelected2Item] = useState<ComboItem>(initComboItem);
-  const [value, setValue] = useState<number>();
   const data: ComboItem[] = [
     { id: 1, name: "あああ" },
     { id: 2, name: "いいい" },
@@ -29,9 +25,14 @@ export default function Home() {
     init: 50,
   };
 
+  const initComboItem: ComboItem = { id: 0, name: "" };
+  const [selectedItem, setSelectedItem] = useState<ComboItem>(initComboItem);
+  const [selected2Item, setSelected2Item] = useState<ComboItem>(initComboItem);
+  const [value, setValue] = useState<number>(data3.init);
+
   // useEffect(() => {
-  //   console.log(value);
-  // }, [value]);
+  //   console.log(selectedItem, selected2Item, value);
+  // }, [selectedItem, selected2Item, value]);
 
   return (
     <>
@@ -72,10 +73,9 @@ export default function Home() {
       />
       <SelRange
         name={"質問3"}
-        // min={data3.min}
-        // max={data3.max}
-        // init={data3.init}
         item={data3}
+        value={value}
+        unit={"%"}
         setValue={(value) => setValue(value)}
       />
     </>
