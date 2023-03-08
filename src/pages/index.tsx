@@ -15,6 +15,9 @@ export default function Home() {
       <Link href="./questionnaire">
         <p>アンケートに答える</p>
       </Link>
+      <Link href="./meal">
+        <p>食事メモのテストサイト</p>
+      </Link>
     </>
   );
 }
