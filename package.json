@@ -7,7 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --max-warnings=0",
-    "lint:fix": "next lint"
+    "lint:fix": "next lint",
+    "prepare": "husky install"
+  },
+  "lint-staged":{
+    "src/*.{ts,tsx}": "yarn lint"
   },
   "dependencies": {
     "@types/node": "18.14.2",
@@ -25,6 +29,8 @@
   },
   "devDependencies": {
     "eslint-config-prettier": "^8.6.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.2",
     "prettier": "^2.8.4"
   }
 }
