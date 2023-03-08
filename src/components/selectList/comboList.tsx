@@ -4,15 +4,6 @@ import { ComboItem } from "@/interfaces";
 import { useState } from "react";
 import Combo from "./combo";
 
-// const BtnOk = styled.button`
-//   border: 1px solid black;
-//   padding: 10px;
-//   margin: 15px 0;
-//   cursor: pointer;
-//   background: black;
-//   color: white;
-// `;
-
 const BtnDoEdit = styled.button<{ isEdit: boolean }>`
   border: 1px solid black;
   background: white;
@@ -73,8 +64,6 @@ const ComboList: NextPage<Props> = (props) => {
     setStVisible(false);
   };
 
-  // console.log(`親の呼び出し${props.name}`);
-
   return (
     <>
       <p>
@@ -83,7 +72,6 @@ const ComboList: NextPage<Props> = (props) => {
           編集する
         </BtnDoEdit>
       </p>
-      {/* <p>選択されたもの: </p> */}
       <DivContainer>
         {comboLists.map((comboList) => (
           <Combo
@@ -95,8 +83,6 @@ const ComboList: NextPage<Props> = (props) => {
           />
         ))}
       </DivContainer>
-
-      {/* <BtnOk>OK</BtnOk> */}
     </>
   );
 };
