@@ -8,7 +8,7 @@ const MealItem: NextPage<Props> = (props) => {
   const name = props.name;
   return (
     <>
-      <p>あああ</p>
+      <p>あああ{name}</p>
     </>
   );
 };
