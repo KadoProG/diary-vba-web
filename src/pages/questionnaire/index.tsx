@@ -1,16 +1,15 @@
 import Head from "next/head";
-// import { Inter } from "next/font/google";
 import ComboList from "@/components/selectList/comboList";
-import { useState } from "react";
-import { ComboItem } from "@/interfaces";
-
-// const inter = Inter({ subsets: ["latin"] });
+import { useEffect, useState } from "react";
+import { ComboItem, selRangeItem } from "@/interfaces";
+import SelRange from "@/components/selectList/selRange";
+import Link from "next/link";
 
 export default function Home() {
   const initComboItem: ComboItem = { id: 0, name: "" };
   const [selectedItem, setSelectedItem] = useState<ComboItem>(initComboItem);
   const [selected2Item, setSelected2Item] = useState<ComboItem>(initComboItem);
-
+  const [value, setValue] = useState<number>();
   const data: ComboItem[] = [
     { id: 1, name: "あああ" },
     { id: 2, name: "いいい" },
@@ -24,9 +23,15 @@ export default function Home() {
     { id: 2, name: "いいえ" },
   ];
 
+  const data3: selRangeItem = {
+    min: 0,
+    max: 100,
+    init: 50,
+  };
+
   // useEffect(() => {
-  //   console.log(selectedItem);
-  // }, [selectedItem]);
+  //   console.log(value);
+  // }, [value]);
 
   return (
     <>
@@ -37,14 +42,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>あああ</h1>
+      <h1>アンケート</h1>
+      <Link href="/">
+        <p>戻る</p>
+      </Link>
       {/* <p>
         {selectedItem === initComboItem
           ? "何も選択されていません"
           : `選択されたものは: ${selectedItem.id}:${selectedItem.name}`}
       </p> */}
       <ComboList
-        name={"質問1"}
+        name={"質問1あああああああああああああああああああああああああ"}
         items={data}
         length={data.length}
         setItem={(item) => setSelectedItem(item)}
@@ -61,6 +69,14 @@ export default function Home() {
         length={data2.length}
         setItem={(item) => setSelected2Item(item)}
         stVisible={selected2Item === initComboItem}
+      />
+      <SelRange
+        name={"質問3"}
+        // min={data3.min}
+        // max={data3.max}
+        // init={data3.init}
+        item={data3}
+        setValue={(value) => setValue(value)}
       />
     </>
   );
