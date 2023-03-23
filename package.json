@@ -11,7 +11,7 @@
     "prepare": "husky install"
   },
   "lint-staged":{
-    "*.{js,jsx,ts,tsx}": "lint"
+    "src/*.{ts,tsx}": "yarn lint"
   },
   "dependencies": {
     "@types/node": "18.14.2",
