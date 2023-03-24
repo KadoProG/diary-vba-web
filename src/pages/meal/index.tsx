@@ -43,7 +43,7 @@ export default function Home() {
     stamp_date: new Date(2023, 3 - 1, 24), //Date[日付のみ使用]
     stamp_time: new Date(0, 0, 0, 23, 7, 6), // Date[時刻のみ利用]
     memo: "あああ", //string
-    type: 1, //number
+    type: 2, //number
     res_data: {
       pro: 10,
       fat: 20,

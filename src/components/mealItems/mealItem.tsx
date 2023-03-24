@@ -28,7 +28,7 @@ const DivFlex = styled.div<{ justify: string }>`
 `;
 
 const DivMealMid = styled.div`
-  flex: 10;
+  flex: 1;
   & p {
     font-size: 16px;
     line-height: 28px;
@@ -60,9 +60,9 @@ const DivMealRight = styled.div`
       content: "";
       transition: 0.3s;
       position: absolute;
-      top: 32px;
+      top: calc(100% / 56 * 32);
       left: 0;
-      width: 18px;
+      width: calc(100% / 10 * 6);
       height: 1px;
       background: black;
       transform: rotate(-35deg);
@@ -71,9 +71,10 @@ const DivMealRight = styled.div`
       content: "";
       transition: 0.3s;
       position: absolute;
-      top: 22px;
+      /* top: 22px; */
+      top: calc(100% / 56 * 22);
       left: 0;
-      width: 18px;
+      width: calc(100% / 10 * 6);
       height: 1px;
       background: black;
       transform: rotate(35deg);

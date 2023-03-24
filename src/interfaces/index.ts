@@ -92,7 +92,7 @@ export type MealRegisteredItem = {
   meal_kana_name:string;
   memo:string;
   maker_id:number;
-  bln_compound:number;
+  bln_compound:boolean; 
   created_date:Date;
   created_time:Date;
   updated_date:Date;
