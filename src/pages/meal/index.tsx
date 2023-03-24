@@ -39,7 +39,7 @@ export default function Home() {
     }, // MealNutrition
   };
   const data2: MealRegisteredDate = {
-    id: 1, //number
+    id: 2, //number
     stamp_date: new Date(2023, 3 - 1, 24), //Date[日付のみ使用]
     stamp_time: new Date(0, 0, 0, 23, 7, 6), // Date[時刻のみ利用]
     memo: "あああ", //string

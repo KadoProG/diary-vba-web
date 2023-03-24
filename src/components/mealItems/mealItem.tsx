@@ -1,5 +1,6 @@
 import { MealRegisteredDate, MealType } from "@/interfaces";
 import { NextPage } from "next";
+import Link from "next/link";
 import styled from "styled-components";
 
 type Props = {
@@ -30,42 +31,66 @@ const DivMealMid = styled.div`
   flex: 10;
   & p {
     font-size: 16px;
-    line-height: 24px;
+    line-height: 28px;
     &:first-child {
       padding-left: 10px;
     }
     &:last-child {
+      flex: 1;
       font-size: 14px;
+      text-align: right;
       padding-right: 10px;
+      overflow: hidden;
+      white-space: nowrap; // 折返し禁止
     }
   }
 `;
 
-const DivMealRight = styled.label`
-  /* background: red; */
+// 矢印の部分
+const DivMealRight = styled.div`
   width: 30px;
-  position: relative;
+  /* position: relative; */
   cursor: pointer;
+  & div {
+    /* background: green; */
+    width: 100%;
+    height: 100%;
+    position: relative;
+    &::before {
+      content: "";
+      transition: 0.3s;
+      position: absolute;
+      top: 32px;
+      left: 0;
+      width: 18px;
+      height: 1px;
+      background: black;
+      transform: rotate(-35deg);
+    }
+    &::after {
+      content: "";
+      transition: 0.3s;
+      position: absolute;
+      top: 22px;
+      left: 0;
+      width: 18px;
+      height: 1px;
+      background: black;
+      transform: rotate(35deg);
+    }
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 28px;
-    left: 0;
-    width: 15px;
-    height: 2px;
-    background: black;
-    transform: rotate(-45deg);
-  }
-  &::after {
-    content: "";
-    position: absolute;
-    top: 18px;
-    left: 0;
-    width: 15px;
-    height: 2px;
-    background: black;
-    transform: rotate(45deg);
+    &:hover {
+      &::before {
+        height: 2px;
+        border-radius: 1px;
+        transform: rotate(-35deg) translate(5px, 3px);
+      }
+      &::after {
+        height: 2px;
+        border-radius: 1px;
+        transform: rotate(35deg) translate(5px, -3px);
+      }
+    }
   }
 `;
 
@@ -155,7 +180,11 @@ const MealItem: NextPage<Props> = (props) => {
             </p>
           </DivFlex>
         </DivMealMid>
-        <DivMealRight></DivMealRight>
+        <DivMealRight>
+          <Link href={`/meal/day/${data.id}`}>
+            <div></div>
+          </Link>
+        </DivMealRight>
       </DivFlex>
     </DivItem>
   );
