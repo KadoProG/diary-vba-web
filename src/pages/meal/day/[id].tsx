@@ -43,7 +43,7 @@ export default function Home() {
       meal_kana_name: "しんぷるたまごやき",
       memo: "美味やでこれは",
       maker_id: 1,
-      bln_compound: false,
+      bln_compound: true,
       created_date: new Date(2023, 3 - 1, 24), //Date[日付のみ使用]
       created_time: new Date(0, 0, 0, 23, 7, 6), // Date[時刻のみ利用]
       updated_date: new Date(2023, 3 - 1, 24), //Date[日付のみ使用]
@@ -68,6 +68,116 @@ export default function Home() {
         Carb: 0.18 * 2,
         Cal: 7.3 * 4 + 6.18 * 9 + 0.18 * 4 * 2,
       },
+      child: [
+        {
+          id: 1,
+          row: 1,
+          meal_id: 1,
+          meal_row: 1,
+          meal_ori_name: "生卵",
+          meal_ex_name: "卵",
+          meal_kana_name: "なまたまご",
+          meal_memo: "たまごー",
+          maker_id: 1,
+          created_date: new Date(2023, 3 - 1, 24), //Date[日付のみ使用]
+          created_time: new Date(0, 0, 0, 23, 7, 6), // Date[時刻のみ利用]
+          updated_date: new Date(2023, 3 - 1, 24), //Date[日付のみ使用]
+          updated_time: new Date(0, 0, 0, 23, 7, 6), // Date[時刻のみ利用]
+          price: 0,
+          base_type: 1,
+          base_visible: 1,
+          base_int_quant: 1,
+          base_gram_quant: 0,
+          pack_quant: 1,
+          pack_unit: "個",
+          gram_quant: 1,
+          gram_unit: "",
+          base_data: {
+            pro: 7.3,
+            fat: 6.18,
+            Carb: 0.18,
+            Cal: 7.3 * 4 + 6.18 * 9 + 0.18 * 4,
+          },
+          res_data: {
+            pro: 7.3,
+            fat: 6.18,
+            Carb: 0.18,
+            Cal: 7.3 * 4 + 6.18 * 9 + 0.18 * 4 * 2,
+          },
+        },
+        {
+          id: 1,
+          row: 1,
+          meal_id: 1,
+          meal_row: 2,
+          meal_ori_name: "だしの素",
+          meal_ex_name: "だしの素",
+          meal_kana_name: "だしのもと",
+          meal_memo: "卵じゃない、出汁の味だ",
+          maker_id: 1,
+          created_date: new Date(2023, 3 - 1, 24), //Date[日付のみ使用]
+          created_time: new Date(0, 0, 0, 23, 7, 6), // Date[時刻のみ利用]
+          updated_date: new Date(2023, 3 - 1, 24), //Date[日付のみ使用]
+          updated_time: new Date(0, 0, 0, 23, 7, 6), // Date[時刻のみ利用]
+          price: 0,
+          base_type: 1,
+          base_visible: 1,
+          base_int_quant: 2,
+          base_gram_quant: 0,
+          pack_quant: 1,
+          pack_unit: "g",
+          gram_quant: 1,
+          gram_unit: "",
+          base_data: {
+            pro: 0.27,
+            fat: 0.01,
+            Carb: 0.3,
+            Cal: 0.27 * 4 + 0.01 * 9 + 0.3 * 4,
+          },
+          res_data: {
+            pro: 0.27 * 2,
+            fat: 0.01 * 2,
+            Carb: 0.3 * 2,
+            Cal: 0.27 * 4 + 0.01 * 9 + 0.3 * 4 * 2,
+          },
+        },
+        {
+          id: 1,
+          row: 1,
+          meal_id: 1,
+          meal_row: 3,
+          meal_ori_name: "オリーブオイル",
+          meal_ex_name: "ｵﾘｰﾌﾞｵｲﾙ",
+          meal_kana_name: "おりーぶおいる",
+          meal_memo: "健康的だねぇ〜",
+          maker_id: 1,
+          created_date: new Date(2023, 3 - 1, 24), //Date[日付のみ使用]
+          created_time: new Date(0, 0, 0, 23, 7, 6), // Date[時刻のみ利用]
+          updated_date: new Date(2023, 3 - 1, 24), //Date[日付のみ使用]
+          updated_time: new Date(0, 0, 0, 23, 7, 6), // Date[時刻のみ利用]
+          price: 0,
+          base_type: 1,
+          base_visible: 1,
+          base_int_quant: 2,
+          base_gram_quant: 0,
+          pack_quant: 2,
+          pack_unit: "杯",
+          gram_quant: 1,
+          gram_unit: "大さじ",
+          base_data: {
+            pro: 0,
+            fat: 12,
+            Carb: 0,
+            Cal: 12 * 9,
+          },
+          res_data: {
+            pro: 0,
+            fat: 12 * 2,
+            Carb: 0,
+            Cal: 12 * 9 * 2,
+          },
+        },
+      ],
     },
     {
       id: 1,
@@ -103,6 +213,7 @@ export default function Home() {
         Carb: (0.18 * 160) / 150,
         Cal: 7.3 * 4 + 6.18 * 9 + (0.18 * 4 * 160) / 150,
       },
+      child: [],
     },
     {
       id: 1,
@@ -138,8 +249,11 @@ export default function Home() {
         Carb: (0.18 * 160) / 150,
         Cal: 7.3 * 4 + 6.18 * 9 + (0.18 * 4 * 160) / 150,
       },
+      child: [],
     },
   ];
+
+  // const data_child: MealRegisteredItemChild[] = [];
 
   return (
     <>

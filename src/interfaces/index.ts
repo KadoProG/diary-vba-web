@@ -80,6 +80,7 @@ export type MealRegisteredDate = {
   memo:string;
   type:number;
   res_data: MealNutrition;
+  items: MealRegisteredItem[];
 }
 
 // 食事登録ー単品
@@ -107,7 +108,7 @@ export type MealRegisteredItem = {
   gram_unit:string;
   base_data: MealNutrition;
   res_data: MealNutrition;
-  
+  child: MealRegisteredItemChild[];
 }
 
 // 食事登録ー複数項目
@@ -125,7 +126,7 @@ export type MealRegisteredItemChild = {
   created_time:Date;
   updated_date:Date;
   updated_time:Date;
-  price:Date;
+  price:number;
   base_type:number;
   base_visible:number;
   base_int_quant:number;
@@ -163,4 +164,13 @@ export type MealNutrition = {
   fat: number;
   Carb: number;
   Cal: number;
+}
+
+declare module '../pages/test.json' {
+  type JsonData = {
+    data: MealRegisteredDate[];
+  }
+
+  const value: JsonData;
+  export = value;
 }

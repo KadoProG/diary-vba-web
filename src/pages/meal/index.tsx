@@ -4,6 +4,9 @@ import { MealRegisteredDate } from "@/interfaces";
 import Head from "next/head";
 import Link from "next/link";
 import styled, { createGlobalStyle } from "styled-components";
+import { GetServerSideProps, NextPage } from "next";
+import json from "./test.json";
+import { useState } from "react";
 
 const DivComponent = styled.div`
   /* width: 767px; */
@@ -24,32 +27,31 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export default function Home() {
-  const data: MealRegisteredDate = {
-    id: 1, //number
-    stamp_date: new Date(2023, 3 - 1, 24, 0, 0, 0), //Date
-    stamp_time: new Date(0, 0, 0, 23, 7, 6), // Date[Timeとして利用]
-    memo: "あああ", //string
-    type: 1, //number
-    res_data: {
-      pro: 10,
-      fat: 20,
-      Carb: 30,
-      Cal: 400,
-    }, // MealNutrition
-  };
-  const data2: MealRegisteredDate = {
-    id: 2, //number
-    stamp_date: new Date(2023, 3 - 1, 24), //Date[日付のみ使用]
-    stamp_time: new Date(0, 0, 0, 23, 7, 6), // Date[時刻のみ利用]
-    memo: "あああ", //string
-    type: 2, //number
-    res_data: {
-      pro: 10,
-      fat: 20,
-      Carb: 30,
-      Cal: 400,
-    }, // MealNutrition
+const ButtonUpdate = styled.button`
+  margin: 5px;
+  border: 1px solid black;
+  background: white;
+  font-size: 14px;
+  padding: 4px;
+  cursor: pointer;
+`;
+type Props = {
+  data: MealRegisteredDate[];
+};
+
+// JSONデータを取得（現在は静的なファイル）
+const jsonBaseData = json;
+const fetchJsonData = async (): Promise<MealRegisteredDate[]> => {
+  const res = await jsonBaseData.data;
+  return res;
+};
+
+const Home: NextPage<Props> = ({ data }) => {
+  const [data_arr, setData_arr] = useState(data);
+
+  const onBtnUpdateClick = async () => {
+    const newData_arr = await fetchJsonData();
+    setData_arr(newData_arr);
   };
 
   return (
@@ -62,12 +64,25 @@ export default function Home() {
       </Head>
       <h1>食事メモ</h1>
       <DivComponent>
-        <MealItem data={data} />
-        <MealItem data={data2} />
+        {data_arr.map((data) => {
+          return <MealItem data={data} key={data.id} />;
+        })}
       </DivComponent>
+      <ButtonUpdate onClick={() => onBtnUpdateClick()}>更新</ButtonUpdate>
       <Link href="/">
         <p>戻る</p>
       </Link>
     </>
   );
-}
+};
+
+export default Home;
+
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
+  const jsonData = await fetchJsonData();
+  return {
+    props: {
+      data: jsonData,
+    },
+  };
+};

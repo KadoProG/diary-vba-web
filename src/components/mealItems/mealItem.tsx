@@ -146,12 +146,7 @@ const MealItem: NextPage<Props> = (props) => {
   const data = props.data;
 
   // 日にちを取得
-  // const stampDate = data.stamp_date;
-  const stampTime = data.stamp_time;
-
-  // const strStampDate = `${stampDate.getFullYear()}/${String(
-  //   stampDate.getMonth() + 1
-  // ).padStart(2, "0")}/${String(stampDate.getDate()).padStart(2, "0")}`;
+  const stampTime = new Date(data.stamp_time);
 
   // Date型を時刻に変更
   const strStampTime = `${String(stampTime.getHours()).padStart(
@@ -159,8 +154,11 @@ const MealItem: NextPage<Props> = (props) => {
     "0"
   )}:${String(stampTime.getMinutes()).padStart(2, "0")}`;
 
-  // 食事の詳細取得は後ほど作成
-  const mealTmpData: string[] = ["卵焼", "飯", "7ｶﾌｪ"];
+  // 食品名称[略]を結合して表示
+  const mealItems = data.items;
+  const strMealItemNames = mealItems.map((mealItem) => {
+    return mealItem.meal_ex_name + " ";
+  });
 
   return (
     <DivItem>
@@ -169,11 +167,7 @@ const MealItem: NextPage<Props> = (props) => {
           {mealType.find((e) => e.id === data.type)?.ex_name ?? "なし"}
         </DivMealType>
         <DivMealMid>
-          <p>
-            {mealTmpData.map((value) => {
-              return <>{value} </>;
-            })}
-          </p>
+          <p>{strMealItemNames}</p>
           <DivFlex justify="space-between">
             <p>{strStampTime}</p>
             <p>
