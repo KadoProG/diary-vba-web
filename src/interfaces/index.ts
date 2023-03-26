@@ -80,6 +80,7 @@ export type MealRegisteredDate = {
   memo:string;
   type:number;
   res_data: MealNutrition;
+  items: MealRegisteredItem[];
 }
 
 // 食事登録ー単品
@@ -92,7 +93,7 @@ export type MealRegisteredItem = {
   meal_kana_name:string;
   memo:string;
   maker_id:number;
-  bln_compound:number;
+  bln_compound:boolean; 
   created_date:Date;
   created_time:Date;
   updated_date:Date;
@@ -107,7 +108,7 @@ export type MealRegisteredItem = {
   gram_unit:string;
   base_data: MealNutrition;
   res_data: MealNutrition;
-  
+  child: MealRegisteredItemChild[];
 }
 
 // 食事登録ー複数項目
@@ -125,7 +126,7 @@ export type MealRegisteredItemChild = {
   created_time:Date;
   updated_date:Date;
   updated_time:Date;
-  price:Date;
+  price:number;
   base_type:number;
   base_visible:number;
   base_int_quant:number;

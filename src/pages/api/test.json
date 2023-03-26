@@ -1,0 +1,324 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "stamp_date": "Fri Mar 24 2023 00:00:00 GMT+0900 (日本標準時)",
+      "stamp_time": "Sun Dec 31 1899 23:07:06 GMT+0900 (日本標準時)",
+      "memo": "一回目の食事",
+      "type": 1,
+      "res_data": {
+        "pro": 10,
+        "fat": 20,
+        "Carb": 30,
+        "Cal": 400
+      },
+      "items": [
+        {
+          "id": 1,
+          "row": 1,
+          "meal_id": 1,
+          "meal_ori_name": "シンプル卵焼き",
+          "meal_ex_name": "卵焼",
+          "meal_kana_name": "しんぷるたまごやき",
+          "memo": "美味やでこれは",
+          "maker_id": 1,
+          "bln_compound": true,
+          "created_date": "Fri Mar 24 2023 00:00:00 GMT+0900 (日本標準時)",
+          "created_time": "Sun Dec 31 1899 23:07:06 GMT+0900 (日本標準時)",
+          "updated_date": "Fri Mar 24 2023 00:00:00 GMT+0900 (日本標準時)",
+          "updated_time": "Sun Dec 31 1899 23:07:06 GMT+0900 (日本標準時)",
+          "price": 0,
+          "bln_custom": false,
+          "base_int_quant": 2,
+          "base_gram_quant": 0,
+          "pack_quant": 1,
+          "pack_unit": "個",
+          "gram_quant": 1,
+          "gram_unit": "",
+          "base_data": {
+            "pro": 7.3,
+            "fat": 6.18,
+            "Carb": 0.18,
+            "Cal": 85.54
+          },
+          "res_data": {
+            "pro": 14.6,
+            "fat": 12.36,
+            "Carb": 0.36,
+            "Cal": 423
+          },
+          "child": [
+            {
+              "id": 1,
+              "row": 1,
+              "meal_id": 1,
+              "meal_row": 1,
+              "meal_ori_name": "生卵",
+              "meal_ex_name": "卵",
+              "meal_kana_name": "なまたまご",
+              "meal_memo": "たまごー",
+              "maker_id": 1,
+              "created_date": "Fri Mar 24 2023 00:00:00 GMT+0900 (日本標準時)",
+              "created_time": "Sun Dec 31 1899 23:07:06 GMT+0900 (日本標準時)",
+              "updated_date": "Fri Mar 24 2023 00:00:00 GMT+0900 (日本標準時)",
+              "updated_time": "Sun Dec 31 1899 23:07:06 GMT+0900 (日本標準時)",
+              "price": 0,
+              "base_type": 1,
+              "base_visible": 1,
+              "base_int_quant": 1,
+              "base_gram_quant": 0,
+              "pack_quant": 1,
+              "pack_unit": "個",
+              "gram_quant": 1,
+              "gram_unit": "",
+              "base_data": {
+                "pro": 7.3,
+                "fat": 6.18,
+                "Carb": 0.18,
+                "Cal": 85.54
+              },
+              "res_data": {
+                "pro": 7.3,
+                "fat": 6.18,
+                "Carb": 0.18,
+                "Cal": 86.26
+              }
+            },
+            {
+              "id": 1,
+              "row": 1,
+              "meal_id": 1,
+              "meal_row": 2,
+              "meal_ori_name": "だしの素",
+              "meal_ex_name": "だしの素",
+              "meal_kana_name": "だしのもと",
+              "meal_memo": "卵じゃない、出汁の味だ",
+              "maker_id": 1,
+              "created_date": "Fri Mar 24 2023 00:00:00 GMT+0900 (日本標準時)",
+              "created_time": "Sun Dec 31 1899 23:07:06 GMT+0900 (日本標準時)",
+              "updated_date": "Fri Mar 24 2023 00:00:00 GMT+0900 (日本標準時)",
+              "updated_time": "Sun Dec 31 1899 23:07:06 GMT+0900 (日本標準時)",
+              "price": 0,
+              "base_type": 1,
+              "base_visible": 1,
+              "base_int_quant": 2,
+              "base_gram_quant": 0,
+              "pack_quant": 1,
+              "pack_unit": "g",
+              "gram_quant": 1,
+              "gram_unit": "",
+              "base_data": {
+                "pro": 0.27,
+                "fat": 0.01,
+                "Carb": 0.3,
+                "Cal": 2.37
+              },
+              "res_data": {
+                "pro": 0.54,
+                "fat": 0.02,
+                "Carb": 0.6,
+                "Cal": 3.57
+              }
+            },
+            {
+              "id": 1,
+              "row": 1,
+              "meal_id": 1,
+              "meal_row": 3,
+              "meal_ori_name": "オリーブオイル",
+              "meal_ex_name": "ｵﾘｰﾌﾞｵｲﾙ",
+              "meal_kana_name": "おりーぶおいる",
+              "meal_memo": "健康的だねぇ〜",
+              "maker_id": 1,
+              "created_date": "Fri Mar 24 2023 00:00:00 GMT+0900 (日本標準時)",
+              "created_time": "Sun Dec 31 1899 23:07:06 GMT+0900 (日本標準時)",
+              "updated_date": "Fri Mar 24 2023 00:00:00 GMT+0900 (日本標準時)",
+              "updated_time": "Sun Dec 31 1899 23:07:06 GMT+0900 (日本標準時)",
+              "price": 0,
+              "base_type": 1,
+              "base_visible": 1,
+              "base_int_quant": 2,
+              "base_gram_quant": 0,
+              "pack_quant": 2,
+              "pack_unit": "杯",
+              "gram_quant": 1,
+              "gram_unit": "大さじ",
+              "base_data": {
+                "pro": 0,
+                "fat": 12,
+                "Carb": 0,
+                "Cal": 108
+              },
+              "res_data": {
+                "pro": 0,
+                "fat": 24,
+                "Carb": 0,
+                "Cal": 216
+              }
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "row": 2,
+          "meal_id": 2,
+          "meal_ori_name": "自炊ご飯（白米）",
+          "meal_ex_name": "飯",
+          "meal_kana_name": "じすいごはんはくまい",
+          "memo": "白いものは毒",
+          "maker_id": 2,
+          "bln_compound": false,
+          "created_date": "Fri Mar 24 2023 00:00:00 GMT+0900 (日本標準時)",
+          "created_time": "Sun Dec 31 1899 23:07:06 GMT+0900 (日本標準時)",
+          "updated_date": "Fri Mar 24 2023 00:00:00 GMT+0900 (日本標準時)",
+          "updated_time": "Sun Dec 31 1899 23:07:06 GMT+0900 (日本標準時)",
+          "price": 0,
+          "bln_custom": false,
+          "base_int_quant": 0,
+          "base_gram_quant": 160,
+          "pack_quant": 150,
+          "pack_unit": "g",
+          "gram_quant": 1,
+          "gram_unit": "",
+          "base_data": {
+            "pro": 7.3,
+            "fat": 6.18,
+            "Carb": 0.18,
+            "Cal": 85.54
+          },
+          "res_data": {
+            "pro": 7.3,
+            "fat": 6.18,
+            "Carb": 0.18,
+            "Cal": 86.26
+          },
+          "child": []
+        },
+        {
+          "id": 1,
+          "row": 3,
+          "meal_id": 3,
+          "meal_ori_name": "セブンカフェ",
+          "meal_ex_name": "7ｶﾌｪ",
+          "meal_kana_name": "せぶんかふぇ",
+          "memo": "7ｶﾌｪ信者！どうもKadoです",
+          "maker_id": 3,
+          "bln_compound": false,
+          "created_date": "Fri Mar 24 2023 00:00:00 GMT+0900 (日本標準時)",
+          "created_time": "Sun Dec 31 1899 23:07:06 GMT+0900 (日本標準時)",
+          "updated_date": "Fri Mar 24 2023 00:00:00 GMT+0900 (日本標準時)",
+          "updated_time": "Sun Dec 31 1899 23:07:06 GMT+0900 (日本標準時)",
+          "price": 0,
+          "bln_custom": false,
+          "base_int_quant": 0,
+          "base_gram_quant": 1,
+          "pack_quant": 1,
+          "pack_unit": "杯",
+          "gram_quant": 1,
+          "gram_unit": "",
+          "base_data": {
+            "pro": 7.3,
+            "fat": 6.18,
+            "Carb": 0.18,
+            "Cal": 85.54
+          },
+          "res_data": {
+            "pro": 7.79,
+            "fat": 6.592,
+            "Carb": 0.192,
+            "Cal": 85.588
+          },
+          "child": []
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "stamp_date": "Fri Mar 24 2023 00:00:00 GMT+0900 (日本標準時)",
+      "stamp_time": "Fri Mar 24 2023 00:00:00 GMT+0900 (日本標準時)",
+      "memo": "２回目の食事",
+      "type": 2,
+      "res_data": {
+        "pro": 10,
+        "fat": 20,
+        "Carb": 30,
+        "Cal": 400
+      },
+      "items": [
+        {
+          "id": 1,
+          "row": 2,
+          "meal_id": 2,
+          "meal_ori_name": "自炊ご飯（白米）",
+          "meal_ex_name": "飯",
+          "meal_kana_name": "じすいごはんはくまい",
+          "memo": "白いものは毒",
+          "maker_id": 2,
+          "bln_compound": false,
+          "created_date": "Fri Mar 24 2023 00:00:00 GMT+0900 (日本標準時)",
+          "created_time": "Sun Dec 31 1899 23:07:06 GMT+0900 (日本標準時)",
+          "updated_date": "Fri Mar 24 2023 00:00:00 GMT+0900 (日本標準時)",
+          "updated_time": "Sun Dec 31 1899 23:07:06 GMT+0900 (日本標準時)",
+          "price": 0,
+          "bln_custom": false,
+          "base_int_quant": 0,
+          "base_gram_quant": 160,
+          "pack_quant": 150,
+          "pack_unit": "g",
+          "gram_quant": 1,
+          "gram_unit": "",
+          "base_data": {
+            "pro": 7.3,
+            "fat": 6.18,
+            "Carb": 0.18,
+            "Cal": 85.54
+          },
+          "res_data": {
+            "pro": 7.3,
+            "fat": 6.18,
+            "Carb": 0.18,
+            "Cal": 86.26
+          },
+          "child": [
+            {
+              "id": 2,
+              "row": 1,
+              "meal_id": 2,
+              "meal_ori_name": "自炊ご飯（白米）",
+              "meal_ex_name": "飯",
+              "meal_kana_name": "じすいごはんはくまい",
+              "memo": "白いものは毒",
+              "maker_id": 2,
+              "bln_compound": false,
+              "created_date": "Fri Mar 24 2023 00:00:00 GMT+0900 (日本標準時)",
+              "created_time": "Sun Dec 31 1899 23:07:06 GMT+0900 (日本標準時)",
+              "updated_date": "Fri Mar 24 2023 00:00:00 GMT+0900 (日本標準時)",
+              "updated_time": "Sun Dec 31 1899 23:07:06 GMT+0900 (日本標準時)",
+              "price": 0,
+              "bln_custom": false,
+              "base_int_quant": 0,
+              "base_gram_quant": 160,
+              "pack_quant": 150,
+              "pack_unit": "g",
+              "gram_quant": 1,
+              "gram_unit": "",
+              "base_data": {
+                "pro": 7.3,
+                "fat": 6.18,
+                "Carb": 0.18,
+                "Cal": 85.54
+              },
+              "res_data": {
+                "pro": 7.3,
+                "fat": 6.18,
+                "Carb": 0.18,
+                "Cal": 86.26
+              },
+              "child": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
