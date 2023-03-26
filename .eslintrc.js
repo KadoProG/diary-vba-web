@@ -8,6 +8,7 @@ module.exports = {
   ],
   plugins: ["@typescript-eslint", "react"],
   rules: {
-    "no-console": ["warn", { allow: ["info", "warn", "error"] }]
+    "no-console": ["warn", { allow: ["info", "warn", "error"] }],
+    "react-hooks/exhaustive-deps": "off"
   }
 }

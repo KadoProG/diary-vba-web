@@ -1,8 +1,10 @@
 import MealItem_Single from "@/components/mealItems/mealItem_single";
-import { MealRegisteredItem } from "@/interfaces";
+import { MealRegisteredDate, MealRegisteredItem } from "@/interfaces";
+import { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useMemo, useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
 const DivTitle = styled.div`
@@ -29,231 +31,52 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export default function Home() {
+const ButtonUpdate = styled.button`
+  margin: 5px;
+  border: 1px solid black;
+  background: white;
+  font-size: 14px;
+  padding: 4px;
+  cursor: pointer;
+`;
+
+type SearchMealRegisterData = {
+  success: boolean;
+  data: MealRegisteredDate[];
+};
+
+type Props = {
+  mealData: MealRegisteredDate[];
+};
+
+// JSONデータを取得[APIより]
+const fetchJsonData = async (): Promise<SearchMealRegisterData> => {
+  const res = await fetch("http://localhost:3000/api/test");
+  const result = res.json();
+  return result;
+};
+
+const Home: NextPage<Props> = ({ mealData }) => {
   const router = useRouter();
   const { id } = router.query;
 
-  const data: MealRegisteredItem[] = [
-    {
-      id: 1,
-      row: 1,
-      meal_id: 1,
-      meal_ori_name: "シンプル卵焼き",
-      meal_ex_name: "卵焼",
-      meal_kana_name: "しんぷるたまごやき",
-      memo: "美味やでこれは",
-      maker_id: 1,
-      bln_compound: true,
-      created_date: new Date(2023, 3 - 1, 24), //Date[日付のみ使用]
-      created_time: new Date(0, 0, 0, 23, 7, 6), // Date[時刻のみ利用]
-      updated_date: new Date(2023, 3 - 1, 24), //Date[日付のみ使用]
-      updated_time: new Date(0, 0, 0, 23, 7, 6), // Date[時刻のみ利用]
-      price: 0,
-      bln_custom: false,
-      base_int_quant: 2,
-      base_gram_quant: 0,
-      pack_quant: 1,
-      pack_unit: "個",
-      gram_quant: 1, //消すかも
-      gram_unit: "",
-      base_data: {
-        pro: 7.3,
-        fat: 6.18,
-        Carb: 0.18,
-        Cal: 7.3 * 4 + 6.18 * 9 + 0.18 * 4,
-      },
-      res_data: {
-        pro: 7.3 * 2,
-        fat: 6.18 * 2,
-        Carb: 0.18 * 2,
-        Cal: 7.3 * 4 + 6.18 * 9 + 0.18 * 4 * 2,
-      },
-      child: [
-        {
-          id: 1,
-          row: 1,
-          meal_id: 1,
-          meal_row: 1,
-          meal_ori_name: "生卵",
-          meal_ex_name: "卵",
-          meal_kana_name: "なまたまご",
-          meal_memo: "たまごー",
-          maker_id: 1,
-          created_date: new Date(2023, 3 - 1, 24), //Date[日付のみ使用]
-          created_time: new Date(0, 0, 0, 23, 7, 6), // Date[時刻のみ利用]
-          updated_date: new Date(2023, 3 - 1, 24), //Date[日付のみ使用]
-          updated_time: new Date(0, 0, 0, 23, 7, 6), // Date[時刻のみ利用]
-          price: 0,
-          base_type: 1,
-          base_visible: 1,
-          base_int_quant: 1,
-          base_gram_quant: 0,
-          pack_quant: 1,
-          pack_unit: "個",
-          gram_quant: 1,
-          gram_unit: "",
-          base_data: {
-            pro: 7.3,
-            fat: 6.18,
-            Carb: 0.18,
-            Cal: 7.3 * 4 + 6.18 * 9 + 0.18 * 4,
-          },
-          res_data: {
-            pro: 7.3,
-            fat: 6.18,
-            Carb: 0.18,
-            Cal: 7.3 * 4 + 6.18 * 9 + 0.18 * 4 * 2,
-          },
-        },
-        {
-          id: 1,
-          row: 1,
-          meal_id: 1,
-          meal_row: 2,
-          meal_ori_name: "だしの素",
-          meal_ex_name: "だしの素",
-          meal_kana_name: "だしのもと",
-          meal_memo: "卵じゃない、出汁の味だ",
-          maker_id: 1,
-          created_date: new Date(2023, 3 - 1, 24), //Date[日付のみ使用]
-          created_time: new Date(0, 0, 0, 23, 7, 6), // Date[時刻のみ利用]
-          updated_date: new Date(2023, 3 - 1, 24), //Date[日付のみ使用]
-          updated_time: new Date(0, 0, 0, 23, 7, 6), // Date[時刻のみ利用]
-          price: 0,
-          base_type: 1,
-          base_visible: 1,
-          base_int_quant: 2,
-          base_gram_quant: 0,
-          pack_quant: 1,
-          pack_unit: "g",
-          gram_quant: 1,
-          gram_unit: "",
-          base_data: {
-            pro: 0.27,
-            fat: 0.01,
-            Carb: 0.3,
-            Cal: 0.27 * 4 + 0.01 * 9 + 0.3 * 4,
-          },
-          res_data: {
-            pro: 0.27 * 2,
-            fat: 0.01 * 2,
-            Carb: 0.3 * 2,
-            Cal: 0.27 * 4 + 0.01 * 9 + 0.3 * 4 * 2,
-          },
-        },
-        {
-          id: 1,
-          row: 1,
-          meal_id: 1,
-          meal_row: 3,
-          meal_ori_name: "オリーブオイル",
-          meal_ex_name: "ｵﾘｰﾌﾞｵｲﾙ",
-          meal_kana_name: "おりーぶおいる",
-          meal_memo: "健康的だねぇ〜",
-          maker_id: 1,
-          created_date: new Date(2023, 3 - 1, 24), //Date[日付のみ使用]
-          created_time: new Date(0, 0, 0, 23, 7, 6), // Date[時刻のみ利用]
-          updated_date: new Date(2023, 3 - 1, 24), //Date[日付のみ使用]
-          updated_time: new Date(0, 0, 0, 23, 7, 6), // Date[時刻のみ利用]
-          price: 0,
-          base_type: 1,
-          base_visible: 1,
-          base_int_quant: 2,
-          base_gram_quant: 0,
-          pack_quant: 2,
-          pack_unit: "杯",
-          gram_quant: 1,
-          gram_unit: "大さじ",
-          base_data: {
-            pro: 0,
-            fat: 12,
-            Carb: 0,
-            Cal: 12 * 9,
-          },
-          res_data: {
-            pro: 0,
-            fat: 12 * 2,
-            Carb: 0,
-            Cal: 12 * 9 * 2,
-          },
-        },
-      ],
-    },
-    {
-      id: 1,
-      row: 2,
-      meal_id: 2,
-      meal_ori_name: "自炊ご飯（白米）",
-      meal_ex_name: "飯",
-      meal_kana_name: "じすいごはんはくまい",
-      memo: "白いものは毒",
-      maker_id: 2,
-      bln_compound: false,
-      created_date: new Date(2023, 3 - 1, 24), //Date[日付のみ使用]
-      created_time: new Date(0, 0, 0, 23, 7, 6), // Date[時刻のみ利用]
-      updated_date: new Date(2023, 3 - 1, 24), //Date[日付のみ使用]
-      updated_time: new Date(0, 0, 0, 23, 7, 6), // Date[時刻のみ利用]
-      price: 0,
-      bln_custom: false,
-      base_int_quant: 0,
-      base_gram_quant: 160,
-      pack_quant: 150,
-      pack_unit: "g",
-      gram_quant: 1,
-      gram_unit: "",
-      base_data: {
-        pro: 7.3,
-        fat: 6.18,
-        Carb: 0.18,
-        Cal: 7.3 * 4 + 6.18 * 9 + 0.18 * 4,
-      },
-      res_data: {
-        pro: (7.3 * 160) / 150,
-        fat: (6.18 * 160) / 150,
-        Carb: (0.18 * 160) / 150,
-        Cal: 7.3 * 4 + 6.18 * 9 + (0.18 * 4 * 160) / 150,
-      },
-      child: [],
-    },
-    {
-      id: 1,
-      row: 3,
-      meal_id: 3,
-      meal_ori_name: "セブンカフェ",
-      meal_ex_name: "7ｶﾌｪ",
-      meal_kana_name: "せぶんかふぇ",
-      memo: "7ｶﾌｪ信者！どうもKadoです",
-      maker_id: 3,
-      bln_compound: false,
-      created_date: new Date(2023, 3 - 1, 24), //Date[日付のみ使用]
-      created_time: new Date(0, 0, 0, 23, 7, 6), // Date[時刻のみ利用]
-      updated_date: new Date(2023, 3 - 1, 24), //Date[日付のみ使用]
-      updated_time: new Date(0, 0, 0, 23, 7, 6), // Date[時刻のみ利用]
-      price: 0,
-      bln_custom: false,
-      base_int_quant: 0,
-      base_gram_quant: 1,
-      pack_quant: 1,
-      pack_unit: "杯",
-      gram_quant: 1,
-      gram_unit: "",
-      base_data: {
-        pro: 7.3,
-        fat: 6.18,
-        Carb: 0.18,
-        Cal: 7.3 * 4 + 6.18 * 9 + 0.18 * 4,
-      },
-      res_data: {
-        pro: (7.3 * 160) / 150,
-        fat: (6.18 * 160) / 150,
-        Carb: (0.18 * 160) / 150,
-        Cal: 7.3 * 4 + 6.18 * 9 + (0.18 * 4 * 160) / 150,
-      },
-      child: [],
-    },
-  ];
+  const [mealItem, setMealItem] = useState<MealRegisteredItem[]>([]);
+  const [data_arr, setData_arr] = useState(mealData);
+
+  useMemo(() => {
+    if (data_arr) {
+      const newMealItem =
+        data_arr.find((e) => e.id.toString() === id)?.items ?? [];
+      setMealItem(newMealItem);
+    }
+  }, [data_arr]);
 
   // const data_child: MealRegisteredItemChild[] = [];
+
+  const onBtnUpdateClick = async () => {
+    const newData_arr = await fetchJsonData();
+    setData_arr(newData_arr.data);
+  };
 
   return (
     <>
@@ -268,13 +91,23 @@ export default function Home() {
       <DivTitle></DivTitle>
 
       <DivComponent>
-        {data.map((e) => {
+        {mealItem.map((e) => {
           return <MealItem_Single data={e} key={e.id} />;
         })}
       </DivComponent>
+      <ButtonUpdate onClick={() => onBtnUpdateClick()}>更新</ButtonUpdate>
       <Link href="/meal">
         <p>戻る</p>
       </Link>
     </>
   );
-}
+};
+
+export default Home;
+
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
+  const jsonData = await fetchJsonData();
+  return {
+    props: { mealData: jsonData.data },
+  };
+};

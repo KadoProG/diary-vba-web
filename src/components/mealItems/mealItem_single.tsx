@@ -192,21 +192,6 @@ const MealItem_Single: NextPage<Props> = (props) => {
 
   const strQuant =
     data.gram_unit === "" ? strTmpQuant : strTmpQuant + "/" + data.gram_unit;
-  // 日にちを取得
-  // const stampDate = data.stamp_date;
-  // const stampTime = data.stamp_time;
-
-  // const strStampDate = `${stampDate.getFullYear()}/${String(
-  //   stampDate.getMonth() + 1
-  // ).padStart(2, "0")}/${String(stampDate.getDate()).padStart(2, "0")}`;
-
-  // Date型を時刻に変更
-  // const strStampTime = `${String(stampTime.getHours()).padStart(
-  //   2,
-  //   "0"
-  // )}:${String(stampTime.getMinutes()).padStart(2, "0")}`;
-
-  // const mealTmpData: string[] = ["卵焼", "飯", "7ｶﾌｪ"];
 
   return (
     <DivItem>
@@ -225,13 +210,7 @@ const MealItem_Single: NextPage<Props> = (props) => {
               {Math.round(data.res_data.Carb * 100) / 100}
             </p>
           </DivFlex>
-          <PMealQuant>
-            {strQuant}
-            {/* {data.base_int_quant} */}
-            {/* {data.pack_unit} */}
-            {/* {data.gram_unit === "" ? "" : "/"}
-            {data.gram_unit} */}
-          </PMealQuant>
+          <PMealQuant>{strQuant}</PMealQuant>
         </DivMealMid>
         <DivMealRight>
           {/* <Link href={`/meal/day/${data.id}`}> */}
