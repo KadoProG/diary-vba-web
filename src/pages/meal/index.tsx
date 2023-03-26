@@ -5,7 +5,6 @@ import Head from "next/head";
 import Link from "next/link";
 import styled, { createGlobalStyle } from "styled-components";
 import { GetServerSideProps, NextPage } from "next";
-import json from "./test.json";
 import { useState } from "react";
 
 const DivComponent = styled.div`
@@ -35,23 +34,28 @@ const ButtonUpdate = styled.button`
   padding: 4px;
   cursor: pointer;
 `;
-type Props = {
+
+type SearchMealRegisterData = {
+  success: boolean;
   data: MealRegisteredDate[];
 };
-
-// JSONデータを取得（現在は静的なファイル）
-const jsonBaseData = json;
-const fetchJsonData = async (): Promise<MealRegisteredDate[]> => {
-  const res = await jsonBaseData.data;
-  return res;
+type Props = {
+  mealData: MealRegisteredDate[];
 };
 
-const Home: NextPage<Props> = ({ data }) => {
-  const [data_arr, setData_arr] = useState(data);
+// JSONデータを取得[APIより]
+const fetchJsonData = async (): Promise<SearchMealRegisterData> => {
+  const res = await fetch("http://localhost:3000/api/test");
+  const result = res.json();
+  return result;
+};
+
+const Home: NextPage<Props> = ({ mealData }) => {
+  const [data_arr, setData_arr] = useState(mealData);
 
   const onBtnUpdateClick = async () => {
     const newData_arr = await fetchJsonData();
-    setData_arr(newData_arr);
+    setData_arr(newData_arr.data);
   };
 
   return (
@@ -81,8 +85,6 @@ export default Home;
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const jsonData = await fetchJsonData();
   return {
-    props: {
-      data: jsonData,
-    },
+    props: { mealData: jsonData.data },
   };
 };

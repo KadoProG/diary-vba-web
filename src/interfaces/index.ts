@@ -165,12 +165,3 @@ export type MealNutrition = {
   Carb: number;
   Cal: number;
 }
-
-declare module '../pages/test.json' {
-  type JsonData = {
-    data: MealRegisteredDate[];
-  }
-
-  const value: JsonData;
-  export = value;
-}
